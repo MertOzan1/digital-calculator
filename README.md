@@ -28,7 +28,7 @@ A responsive digital calculator built with HTML, CSS, and JavaScript.
 
 ## Live Demo
 
-Coming soon!
+[View Live Demo](https://mertozan1.github.io/digital-calculator/)
 
 ## About
 
