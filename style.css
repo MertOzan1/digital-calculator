@@ -1,0 +1,243 @@
+
+/* Sayfanın genel görünümü */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px 16px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #18212b, #303c49);
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+}
+
+/* Başlık */
+h1 {
+    margin: 0 0 25px;
+    text-align: center;
+    font-size: 30px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
+}
+
+/* Hesap makinesi gövdesi */
+#calculator {
+    width: 100%;
+    max-width: 400px;
+    padding: 22px;
+    border: 2px solid #536170;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #485563, #202832);
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.4),
+        inset 0 2px 3px rgba(255, 255, 255, 0.12);
+}
+
+/* Hesap makinesi ekranı */
+#result {
+    width: 100%;
+    height: 90px;
+    margin: 0 0 22px;
+    padding: 22px 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border: 2px solid #080d12;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #c0d5bd, #8fa991);
+    box-shadow:
+        inset 0 4px 10px rgba(0, 0, 0, 0.3),
+        0 2px 0 rgba(255, 255, 255, 0.08);
+    color: #15291c;
+    text-align: right;
+    font-family: monospace;
+    font-size: 34px;
+}
+
+/* Hesap makinesi kapalıyken ekran */
+#result.off {
+    background: #111111;
+    color: #111111;
+    border-color: #111111;
+    box-shadow: none;
+}
+
+/* Tuşların yerleşimi */
+#buttons {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+/* Genel tuş tasarımı */
+#buttons button {
+    min-width: 0;
+    min-height: 52px;
+    padding: 10px 4px;
+    border: 1px solid #657383;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #526171, #35414e);
+    box-shadow:
+        0 5px 0 #202832,
+        0 7px 10px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+        background 0.15s,
+        border-color 0.15s,
+        transform 0.15s,
+        box-shadow 0.15s;
+}
+
+/* Gri tuşların üzerine gelince */
+#buttons button:hover {
+    background: linear-gradient(180deg, #647588, #435263);
+}
+
+/* Genel basılma efekti */
+#buttons button:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #202832;
+}
+
+/* Klavye ile gezinirken görünür odak */
+#buttons button:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+}
+
+/* Mavi işlem tuşları */
+#buttons button:nth-child(3),
+#buttons button:nth-child(4),
+#buttons button:nth-child(5),
+#buttons button:nth-child(9),
+#buttons button:nth-child(13) {
+    background: linear-gradient(180deg, #347fb5, #225579);
+    border-color: #4a91c3;
+}
+
+#buttons button:nth-child(3):hover,
+#buttons button:nth-child(4):hover,
+#buttons button:nth-child(5):hover,
+#buttons button:nth-child(9):hover,
+#buttons button:nth-child(13):hover {
+    background: linear-gradient(180deg, #4295ce, #2b6995);
+    border-color: #70b4e2;
+}
+
+#buttons button:nth-child(3):active,
+#buttons button:nth-child(4):active,
+#buttons button:nth-child(5):active,
+#buttons button:nth-child(9):active,
+#buttons button:nth-child(13):active {
+    background: linear-gradient(180deg, #225579, #19415e);
+    box-shadow: 0 1px 0 #142f43;
+}
+
+/* C ve geri silme tuşları */
+#buttons button:nth-child(1),
+#buttons button:nth-child(2) {
+    background: linear-gradient(180deg, #3ca879, #23734f);
+    border-color: #4db68a;
+}
+
+#buttons button:nth-child(1):hover,
+#buttons button:nth-child(2):hover {
+    background: linear-gradient(180deg, #50bd8c, #2c875e);
+    border-color: #72d4a8;
+}
+
+#buttons button:nth-child(1):active,
+#buttons button:nth-child(2):active {
+    background: linear-gradient(180deg, #23734f, #185438);
+    box-shadow: 0 1px 0 #123d29;
+}
+
+/* Eşittir tuşu */
+#buttons button:nth-child(17) {
+    background: linear-gradient(180deg, #e99c42, #b96b1b);
+    border-color: #f2b66e;
+}
+
+#buttons button:nth-child(17):hover {
+    background: linear-gradient(180deg, #f3b15e, #ce7c26);
+    border-color: #ffd08e;
+}
+
+#buttons button:nth-child(17):active {
+    background: linear-gradient(180deg, #b96b1b, #945315);
+    box-shadow: 0 1px 0 #75400f;
+}
+
+/* Açma / kapama tuşu */
+#buttons #power {
+    grid-column: span 1;
+    padding: 10px 0;
+    border-color: #db7777;
+    background: linear-gradient(180deg, #c65353, #923737);
+    box-shadow:
+        0 5px 0 #652525,
+        0 7px 10px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    font-size: 24px;
+}
+
+#buttons #power:hover {
+    background: linear-gradient(180deg, #dc6868, #a84343);
+    border-color: #f19a9a;
+}
+
+#buttons #power:active {
+    background: linear-gradient(180deg, #923737, #702828);
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #652525;
+}
+
+/* Küçük ekranlar */
+@media (max-width: 420px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    #calculator {
+        padding: 16px;
+    }
+
+    #buttons {
+        gap: 9px;
+    }
+
+    #buttons button {
+        min-height: 48px;
+        font-size: 18px;
+    }
+
+    #buttons #power {
+        font-size: 24px;
+    }
+
+    #result {
+        height: 80px;
+        padding: 18px 12px;
+        font-size: 29px;
+    }
+}
+
+/* Sürüm bilgisi */
+#version {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 14px;
+    color: #ffffff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
