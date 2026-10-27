@@ -32,4 +32,14 @@ A responsive digital calculator built with HTML, CSS, and JavaScript.
 
 ## About
 
-This project was built as part of my journey into frontend development. It helped me practice JavaScript and bring HTML, CSS, and JavaScript together in an interactive web application.
+This project was built as part of my journey into frontend development. It helped me practice JavaScript and bring HTML, CSS, and JavaScript together in an interactive web application
+
+## Screenshots
+
+### Desktop Interface
+
+![Calculator desktop interface](screenshots/calculator-desktop.png)
+
+### Calculation Example
+
+![Calculator operation example](screenshots/calculator-operation.png)
